@@ -29,7 +29,7 @@ func StringSum(input string) (output string, err error) {
 	var sum int64 = 0
 	stringList := strings.Split(input, "+")
 	if len(stringList) != 2 {
-		return "", errorNotTwoOperands
+		return "", fmt.Errorf("some error: %w", errorNotTwoOperands)
 	}
 	for _, v := range stringList {
 		v = strings.Replace(v, " ", "", -1)
@@ -38,7 +38,7 @@ func StringSum(input string) (output string, err error) {
 		}
 		number, err := strconv.ParseInt(v, 10, 64)
 		if err != nil {
-			return "", fmt.Errorf("wrong content")
+			return "", fmt.Errorf("some error: %w", errorEmptyInput)
 		}
 		sum = sum + number
 
