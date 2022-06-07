@@ -34,7 +34,7 @@ func StringSum(input string) (output string, err error) {
 	for _, v := range stringList {
 		v = strings.Replace(v, " ", "", -1)
 		if v == "" {
-			return "", fmt.Errorf(errorEmptyInput.Error())
+			return "", errorEmptyInput
 		}
 		number, err := strconv.ParseInt(v, 10, 64)
 		if err != nil {
