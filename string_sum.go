@@ -27,15 +27,15 @@ var (
 
 func StringSum(input string) (output string, err error) {
 	var sum int64 = 0
+	input = strings.Replace(input, " ", "", -1)
+	if input == "" {
+		return "", fmt.Errorf("some error: %w", errorEmptyInput)
+	}
 	stringList := strings.Split(input, "+")
 	if len(stringList) != 2 {
 		return "", fmt.Errorf("some error: %w", errorNotTwoOperands)
 	}
 	for _, v := range stringList {
-		v = strings.Replace(v, " ", "", -1)
-		if v == "" {
-			return "", fmt.Errorf("some error: %w", errorEmptyInput)
-		}
 		number, err := strconv.ParseInt(v, 10, 64)
 		if err != nil {
 			return "", fmt.Errorf("some error: %w", err)
