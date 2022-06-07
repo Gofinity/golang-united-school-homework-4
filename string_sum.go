@@ -34,11 +34,11 @@ func StringSum(input string) (output string, err error) {
 	for _, v := range stringList {
 		v = strings.Replace(v, " ", "", -1)
 		if v == "" {
-			return "", errorEmptyInput
+			return "", fmt.Errorf("some error: %w", errorEmptyInput)
 		}
 		number, err := strconv.ParseInt(v, 10, 64)
 		if err != nil {
-			return "", fmt.Errorf("some error: %w", errorEmptyInput)
+			return "", fmt.Errorf("some error: %w", err)
 		}
 		sum = sum + number
 
